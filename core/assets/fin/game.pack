@@ -1,130 +1,137 @@
 
 game.png
 format: RGBA8888
-filter: MipMap,MipMapLinearLinear
+filter: MipMapLinearLinear,Nearest
 repeat: none
 green
   rotate: false
-  xy: 0, 1301
+  xy: 0, 1300
   size: 400, 640
   orig: 400, 640
   offset: 0, 0
   index: -1
 red
   rotate: false
-  xy: 0, 660
+  xy: 0, 659
   size: 400, 640
   orig: 400, 640
   offset: 0, 0
   index: -1
-blank
+game_card
   rotate: false
   xy: 401, 1461
-  size: 300, 480
-  orig: 300, 480
+  size: 329, 479
+  orig: 329, 479
   offset: 0, 0
   index: -1
-lizard
+lizard_missing
   rotate: false
   xy: 0, 179
-  size: 300, 480
-  orig: 300, 480
+  size: 329, 479
+  orig: 329, 479
   offset: 0, 0
   index: -1
-paper
+paper_missing
   rotate: false
-  xy: 401, 980
-  size: 300, 480
-  orig: 300, 480
+  xy: 401, 981
+  size: 329, 479
+  orig: 329, 479
   offset: 0, 0
   index: -1
-rock
+rock_missing
   rotate: false
-  xy: 702, 1461
-  size: 300, 480
-  orig: 300, 480
+  xy: 731, 1461
+  size: 329, 479
+  orig: 329, 479
   offset: 0, 0
   index: -1
-scissors
+scissors_missing
   rotate: false
-  xy: 702, 980
-  size: 300, 480
-  orig: 300, 480
+  xy: 731, 981
+  size: 329, 479
+  orig: 329, 479
   offset: 0, 0
   index: -1
-spock
+spock_missing
   rotate: false
-  xy: 1003, 1461
+  xy: 1061, 1461
+  size: 329, 479
+  orig: 329, 479
+  offset: 0, 0
+  index: -1
+blank
+  rotate: false
+  xy: 1061, 980
   size: 300, 480
   orig: 300, 480
   offset: 0, 0
   index: -1
 ABOUTBUTTON
   rotate: false
-  xy: 401, 801
+  xy: 1391, 1762
   size: 380, 178
   orig: 380, 178
   offset: 0, 0
   index: -1
 ABOUTBUTTONSELECTED
   rotate: false
-  xy: 1304, 1763
+  xy: 401, 802
   size: 380, 178
   orig: 380, 178
   offset: 0, 0
   index: -1
 CLOSEBUTTON
   rotate: false
-  xy: 1304, 1584
+  xy: 1391, 1583
   size: 380, 178
   orig: 380, 178
   offset: 0, 0
   index: -1
 CLOSEBUTTONSELECTED
   rotate: false
-  xy: 401, 622
+  xy: 401, 623
   size: 380, 178
   orig: 380, 178
   offset: 0, 0
   index: -1
 EXITBUTTON
   rotate: false
-  xy: 1304, 1405
+  xy: 0, 0
   size: 380, 178
   orig: 380, 178
   offset: 0, 0
   index: -1
 EXITBUTTONSELECTED
   rotate: false
-  xy: 0, 0
+  xy: 1391, 1404
   size: 380, 178
   orig: 380, 178
   offset: 0, 0
   index: -1
 PLAYBUTTON
   rotate: false
-  xy: 301, 443
+  xy: 1362, 1225
   size: 380, 178
   orig: 380, 178
   offset: 0, 0
   index: -1
 PLAYBUTTONSELECTED
   rotate: false
-  xy: 301, 264
+  xy: 1362, 1046
   size: 380, 178
   orig: 380, 178
   offset: 0, 0
   index: -1
 RULESBUTTON
   rotate: false
-  xy: 782, 801
+  xy: 330, 444
   size: 380, 178
   orig: 380, 178
   offset: 0, 0
   index: -1
 RULESBUTTONSELECTED
   rotate: false
-  xy: 782, 622
+  xy: 330, 265
   size: 380, 178
   orig: 380, 178
   offset: 0, 0
