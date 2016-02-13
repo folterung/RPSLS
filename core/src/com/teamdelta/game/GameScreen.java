@@ -22,7 +22,6 @@ import com.teamdelta.game.entities.EntityNames;
  * 2/9/16  - Fixed tieScore spelling errors - Dennis
  * 2/12/16 - Added non-image to buttons - Ismael
  * 2/15/16 - Fixed boolean set for winner - Dennis
-<<<<<<< HEAD
  * 2/14/16 - calculate winner using new GameLogic class - warnock
  * 2/14/16 - refactored to set player choice to corresponding RPSLSEntity - warnock
  * 2/14/16 - added click sound to buttons - Warnock
@@ -32,8 +31,6 @@ import com.teamdelta.game.entities.EntityNames;
  * 2/17/16 - Added Background - Warnock
  * 2/17/16 - Repositioned score for CPU - Warnock
  * 2/18/16 - added delay for CPU turn - Ismael
-=======
->>>>>>> 1d932b532b0df74d8baf727851e302726dcd93c5
  */
 public class GameScreen extends AbstractScreen {
 	Button rockButton;
