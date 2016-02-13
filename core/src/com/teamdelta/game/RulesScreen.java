@@ -14,6 +14,7 @@ import com.badlogic.gdx.math.Vector3;
  * 
  * The RulesScreen class displays the rules for the game.
  * 
+ * 2/13/16 - Corrected spelling of strings in atlas.findRegion() methods - Ismael 
  */
 
 public class RulesScreen extends AbstractScreen {
@@ -41,20 +42,22 @@ public class RulesScreen extends AbstractScreen {
 		closeButton = new Button(atlas.findRegion("CLOSEBUTTON"),
 				atlas.findRegion("CLOSEBUTTONSELECTED"), new Rectangle(
 						340, 50, 120, 40));
-		rockButton = new Button(atlas.findRegion("rock"),
-				atlas.findRegion("rock"), new Rectangle(
+		
+		//--Corrected spelling of strings
+		rockButton = new Button(atlas.findRegion("rock_missing"),
+				atlas.findRegion("rock_missing"), new Rectangle(
 						50, 350, 100, 150));
-		paperButton = new Button(atlas.findRegion("paper"),
-				atlas.findRegion("paper"), new Rectangle(
+		paperButton = new Button(atlas.findRegion("paper_missing"),
+				atlas.findRegion("paper_missing"), new Rectangle(
 						650, 350, 100, 150));
-		scissorsButton = new Button(atlas.findRegion("scissors"),
-				atlas.findRegion("scissors"), new Rectangle(
+		scissorsButton = new Button(atlas.findRegion("scissors_missing"),
+				atlas.findRegion("scissors_missing"), new Rectangle(
 						50, 150, 100, 150));
-		lizardButton = new Button(atlas.findRegion("lizard"),
-				atlas.findRegion("lizard"), new Rectangle(
+		lizardButton = new Button(atlas.findRegion("lizard_missing"),
+				atlas.findRegion("lizard_missing"), new Rectangle(
 						650, 150, 100, 150));
-		spockButton = new Button(atlas.findRegion("spock"),
-				atlas.findRegion("spock"), new Rectangle(
+		spockButton = new Button(atlas.findRegion("spock_missing"),
+				atlas.findRegion("spock_missing"), new Rectangle(
 						350, 275, 100, 150));
 	}
 
