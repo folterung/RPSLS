@@ -6,6 +6,16 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 
+/**
+ * 
+ * @author Dennis Bryant
+ * @version 1.0.0.0
+ * @since 2/8/16
+ * 
+ * The RulesScreen class displays the rules for the game.
+ * 
+ */
+
 public class RulesScreen extends AbstractScreen {
 	Button closeButton;
 	Button rockButton;

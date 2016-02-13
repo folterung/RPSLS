@@ -6,6 +6,16 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
+/**
+ * 
+ * @author Ismael Poteau 
+ * @version 1.0.0.0
+ * @since 2/9/16
+ * 
+ * The AbstractScreen class defines the screens for the game.
+ * 
+ */
+
 public abstract class AbstractScreen extends InputAdapter implements Screen {
 	Main gameInstance;
 	SpriteBatch batch;

@@ -5,6 +5,16 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 
+/**
+ * 
+ * @author Jeff Kunert
+ * @version 1.0.0.0
+ * @since 2/9/16
+ * 
+ * The GameScreen class controls the game play and statistics display.
+ * 
+ */
+
 public class StartScreen extends  AbstractScreen {
 
 	Vector3 input;

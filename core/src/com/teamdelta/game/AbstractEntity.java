@@ -4,6 +4,16 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
+/**
+ * 
+ * @author Jake Herritt
+ * @version 1.0.0.0
+ * @since 2/9/16
+ * 
+ * The AbstractEntity class defines controls for the player game play.
+ * 
+ */
+
 public abstract class AbstractEntity {
 	String name;
 	Sprite skin;

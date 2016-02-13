@@ -4,6 +4,16 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
+/**
+ * 
+ * @author Jake Herritt
+ * @version 1.0.0.0
+ * @since 2/9/16
+ * 
+ * The User class controls the user game play.
+ * 
+ */
+
 public class User extends AbstractEntity {
 	
 	public User(TextureAtlas atlas){

@@ -4,6 +4,16 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
+/**
+ * 
+ * @author Jake Herritt
+ * @version 1.0.0.0
+ * @since 2/9/16
+ * 
+ * The CPU class controls CPU game play.
+ * 
+ */
+
 public class CPU extends AbstractEntity {
 	
 	public CPU(TextureAtlas atlas){

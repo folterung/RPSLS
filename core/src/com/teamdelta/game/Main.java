@@ -11,6 +11,20 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
+/**
+ * 
+ * @author Ismael Poteau
+ * @author Bill Warnock
+ * @author Jake Herritt
+ * @author Jeff Kunert
+ * @author Dennis Bryant
+ * @version 1.0.0.0
+ * @since 2/9/16
+ * 
+ * The Game class controls the game.
+ * 
+ */
+
 public class Main extends Game {
 	//--
 	SpriteBatch batch;

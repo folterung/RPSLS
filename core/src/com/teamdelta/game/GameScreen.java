@@ -9,14 +9,17 @@ import com.teamdelta.game.AbstractEntity.Choices;
 
 /**
  * 
- * @author Ismeal
+ * @author Ismael Poteau - Rendering
+ * @author Bill Warnock - Input Processing
+ * @author Jake Herritt -  Game Logic
+ * @author Jeff Kunert -  Initialization
  * @version 1.0.0.0
  * @since 2/9/16
  * 
  * The GameScreen class controls the game play and statistics display.
  * 
- * 2/9/16 - Fixed tieScore spelling errors - Dennis
- * 
+ * 2/9/16  - Fixed tieScore spelling errors - Dennis
+ * 2/12/16 - Added non-image to buttons - Ismael
  */
 public class GameScreen extends AbstractScreen {
 	Button rockButton;
