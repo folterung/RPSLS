@@ -20,7 +20,7 @@ public abstract class AbstractEntity {
 	boolean turnToPlay;
 	int winScore;
 	int loseScore;
-	int tieScore; //Added by Jeff
+	int tieScore; //Edited by Jeff Kunert
 	enum Choices{ROCK, PAPER, SCISSORS, LIZARD, SPOCK};
 	Choices choice;
 	TextureAtlas atlas;
