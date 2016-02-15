@@ -118,7 +118,10 @@ public class AboutScreen extends AbstractScreen{
 		input.y = screenY;
 
 		gameInstance.camera.unproject(input);
+
+		//added click sound - warnock
 		if(closeButton.colisionRect.contains(input.x, input.y)){
+			gameInstance.clickSound.play();
 			closeButton.selected = true;
 		}else{
 			closeButton.selected = false;

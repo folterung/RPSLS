@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
-import com.teamdelta.game.AbstractEntity.Choices;
+import com.teamdelta.game.entities.EntityNames;
 
 /**
  * 
@@ -61,16 +61,11 @@ public class GameScreen extends AbstractScreen {
 						100, 50));
 		
 		//Bill added placeholders
-		rockButton = new Button(atlas.findRegion("rock_missing"),
-				atlas.findRegion("rock_missing"), new Rectangle(50, 350, 100, 150));
-		paperButton = new Button(atlas.findRegion("paper_missing"),
-				atlas.findRegion("paper_missing"), new Rectangle(650, 350, 100, 150));
-		scissorsButton = new Button(atlas.findRegion("scissors_missing"),
-				atlas.findRegion("scissors_missing"), new Rectangle(50, 150, 100, 150));
-		lizardButton = new Button(atlas.findRegion("lizard_missing"),
-				atlas.findRegion("lizard_missing"), new Rectangle(650, 150, 100, 150));
-		spockButton = new Button(atlas.findRegion("spock_missing"),
-				atlas.findRegion("spock_missing"), new Rectangle(350, 275, 100, 150));
+		rockButton 		= gameS.rockEntity.setButton(new Rectangle(50, 350, 100, 150));
+		paperButton 	= gameS.paperEntity.setButton(new Rectangle(650, 350, 100, 150));
+		scissorsButton 	= gameS.scissorsEntity.setButton(new Rectangle(50, 150, 100, 150));
+		lizardButton 	= gameS.lizardEntity.setButton(new Rectangle(650, 150, 100, 150));
+		spockButton 	= gameS.spockEntity.setButton(new Rectangle(350, 275, 100, 150));
 	}
 
 	@Override
@@ -139,10 +134,10 @@ public class GameScreen extends AbstractScreen {
 			font.draw(batch, "CPU's Turn", 50, 600);
 		}
 		if(playerTookTurn){
-			font.draw(batch, "You chose: " + player.choice.toString(), 50, 600);
+			font.draw(batch, "You chose: " + player.choice.getName(), 50, 600);
 		}
 		if(cpuTookTurn){
-			font.draw(batch, "CPU chose: " + cpu.choice.toString(), 600, 600);
+			font.draw(batch, "CPU chose: " + cpu.choice.getName(), 600, 600);
 		}
 		if(gameover){
 			font.draw(batch, "Play Again?", 355, 230);//Ismael added play again message when game is over
@@ -156,241 +151,39 @@ public class GameScreen extends AbstractScreen {
 				font.draw(batch, "CPU won this round", 320, 620);
 			}
 		}
-
 	}
 
 	@Override
 	void update(float timeSinceLastFrame) {
-
+// calculate winner using new GameLogic class - warnock
 		if (playerTookTurn && cpuTookTurn && !gameover) {
-			switch (player.choice) {
-			case ROCK:
-				switch (cpu.choice) {
-				case ROCK:
-					isGameTied = true;
-					cpu.tieScore ++; //Jeff Added tieScore Edit for cpu
-					player.tieScore ++; //Jeff Added tieScore for player
-					gameover = true;
-					break;
-				case PAPER:
-					isCPUWin = true;
-					cpu.winScore ++;
-					player.loseScore ++;
-					gameover = true;
-					break;
-				case SCISSORS:
-					isPlayerWin = true;
-					cpu.loseScore ++;
-					player.winScore ++;
-					gameover = true;
-					break;
-				case LIZARD:
-					isPlayerWin = true;
-					cpu.loseScore ++;
-					player.winScore ++;
-					gameover = true;
-					break;
-				case SPOCK:
-					isCPUWin = true;
-					cpu.winScore ++;
-					player.loseScore ++;
-					gameover = true;
-					break;
-				default:
-					break;
-				}
-				break;
-			case PAPER:
-				switch (cpu.choice) {
-				case ROCK:
-					isPlayerWin = true;
-					cpu.loseScore ++;
-					player.winScore ++;
-					gameover = true;
-					break;
-				case PAPER:
-					isGameTied = true;
-					cpu.tieScore ++; //Jeff Added tieScore Edit for cpu
-					player.tieScore ++; //Jeff Added tieScore for player
-					gameover = true;
-					break;
-				case SCISSORS:
-					isCPUWin = true;
-					cpu.winScore ++;
-					player.loseScore ++;
-					gameover = true;
-					break;
-				case LIZARD:
-					isCPUWin = true;
-					cpu.winScore ++;
-					player.loseScore ++;
-					gameover = true;
-					break;
-				case SPOCK:
-					isPlayerWin = true;
-					cpu.loseScore ++;
-					player.winScore ++;
-					gameover = true;
-					break;
-				default:
-					break;
-				}
-				break;
-			case SCISSORS:
-				switch (cpu.choice) {
-				case ROCK:
-					isCPUWin = true;
-					cpu.winScore ++;
-					player.loseScore ++;
-					gameover = true;
-					break;
-				case PAPER:
-					isPlayerWin = true;
-					cpu.loseScore ++;
-					player.winScore ++;
-					gameover = true;
-					break;
-				case SCISSORS:
-					isGameTied = true;
-					cpu.tieScore ++; //Jeff Added tieScore Edit for cpu
-					player.tieScore ++; //Jeff Added tieScore for player
-					gameover = true;
-					break;
-				case LIZARD:
-					isPlayerWin = true;
-					cpu.loseScore ++;
-					player.winScore ++;
-					gameover = true;
-					break;
-				case SPOCK:
-					isCPUWin = true;
-					cpu.winScore ++;
-					player.loseScore ++;
-					gameover = true;
-					break;
-				default:
-					break;
-				}
-				break;
-			case LIZARD:
-				switch (cpu.choice) {
-				case ROCK:
-					isCPUWin = true;
-					cpu.winScore ++;
-					player.loseScore ++;
-					gameover = true;
-					break;
-				case PAPER:
-					isPlayerWin = true;
-					cpu.loseScore ++;
-					player.winScore ++;
-					gameover = true;
-					break;
-				case SCISSORS:
-					isCPUWin = true;
-					cpu.winScore ++;
-					player.loseScore ++;
-					gameover = true;
-					break;
-				case LIZARD:
-					isGameTied = true;
-					cpu.tieScore ++; //Jeff Added tieScore Edit for cpu
-					player.tieScore ++; //Jeff Added tieScore for player
-					gameover = true;
-					break;
-				case SPOCK:
-					isPlayerWin = true;
-					cpu.loseScore ++;
-					player.winScore ++;
-					gameover = true;
-					break;
-				default:
-					break;
-				}
-				break;
-			case SPOCK:
-				switch (cpu.choice) {
-				case ROCK:
-					isPlayerWin = true;
-					cpu.loseScore ++;
-					player.winScore ++;
-					gameover = true;
-					break;
-				case PAPER:
-					isCPUWin = true;
-					cpu.winScore ++;
-					player.loseScore ++;
-					gameover = true;
-					break;
-				case SCISSORS:
-					isPlayerWin = true;
-					cpu.loseScore ++;
-					player.winScore ++;
-					gameover = true;
-					break;
-				case LIZARD:
-					isCPUWin = true;
-					cpu.winScore ++;
-					player.loseScore ++;
-					gameover = true;
-					break;
-				case SPOCK:
-					isGameTied = true;
-					cpu.tieScore ++; //Jeff Added tieScore Edit for cpu
-					player.tieScore ++; //Jeff Added tieScore for player
-					gameover = true;
-					break;
-				default:
-					break;
-				}
-				break;
-			default:
-				break;
+			int winnerValue = gameInstance.gameLogic.determineWinner(player.choice, cpu.choice);
 
+			isGameTied = false;
+			gameover = true;
+
+			if(winnerValue == -1) {
+				isGameTied = true;
+				cpu.tieScore ++;
+				player.tieScore ++;
+			} else if(winnerValue == 0) {
+				cpu.winScore++;
+				player.loseScore++;
+			} else if(winnerValue == 1) {
+				cpu.loseScore++;
+				player.winScore++;
 			}
 		}
 
-		if (playerTookTurn) {
-			if (cpu.turnToPlay) {
-				if (!cpuTookTurn) {
-					int randomNum = MathUtils.random(1, 5);
-					switch (randomNum) {
-					case 1:
-						cpu.choice = Choices.ROCK;
-						cpuTookTurn = true;
-						cpu.turnToPlay = false;
-						break;
-					case 2:
-						cpu.choice = Choices.PAPER;
-						cpuTookTurn = true;
-						cpu.turnToPlay = false;
-						break;
-					case 3:
-						cpu.choice = Choices.SCISSORS;
-						cpuTookTurn = true;
-						cpu.turnToPlay = false;
-						break;
-					case 4:
-						cpu.choice = Choices.LIZARD;
-						cpuTookTurn = true;
-						cpu.turnToPlay = false;
-						break;
-					case 5:
-						cpu.choice = Choices.SPOCK;
-						cpuTookTurn = true;
-						cpu.turnToPlay = false;
-						break;
-					default:
-						break;
-					}
-				}
-			}
+		if (playerTookTurn && cpu.turnToPlay && !cpuTookTurn) {
+			cpu.choice = gameInstance.gameLogic.getEntity();
+			cpuTookTurn = true;
+			cpu.turnToPlay = false;
 		}
 
 	}
 
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-
 		input.x = screenX;
 		input.y = screenY;
 
@@ -427,40 +220,25 @@ public class GameScreen extends AbstractScreen {
 				resetGameState();
 			}
 		}
-
-		if (player.turnToPlay) {
+// refactored to set player choice to corresponding RPSLSEntity - warnock
+		if(player.turnToPlay) {
 			if (rockButton.colisionRect.contains(input.x, input.y)) {
-				player.choice = Choices.ROCK;
-				playerTookTurn = true;
-				player.turnToPlay = false;
-				cpu.turnToPlay = true;
-			}
-			if (paperButton.colisionRect.contains(input.x, input.y)) {
-
-				player.choice = Choices.PAPER;
-				playerTookTurn = true;
-				player.turnToPlay = false;
-				cpu.turnToPlay = true;
-			}
-			if (scissorsButton.colisionRect.contains(input.x, input.y)) {
-				player.choice = Choices.SCISSORS;
-				playerTookTurn = true;
-				player.turnToPlay = false;
-				cpu.turnToPlay = true;
-			}
-			if (lizardButton.colisionRect.contains(input.x, input.y)) {
-				player.choice = Choices.LIZARD;
-				playerTookTurn = true;
-				player.turnToPlay = false;
-				cpu.turnToPlay = true;
-			}
-			if (spockButton.colisionRect.contains(input.x, input.y)) {
-				player.choice = Choices.SPOCK;
-				playerTookTurn = true;
-				player.turnToPlay = false;
-				cpu.turnToPlay = true;
+				player.choice = gameInstance.gameLogic.getEntity(EntityNames.ROCK);
+			} else if(paperButton.colisionRect.contains(input.x, input.y)) {
+				player.choice = gameInstance.gameLogic.getEntity(EntityNames.PAPER);
+			} else if(scissorsButton.colisionRect.contains(input.x, input.y)) {
+				player.choice = gameInstance.gameLogic.getEntity(EntityNames.SCISSORS);
+			} else if(lizardButton.colisionRect.contains(input.x, input.y)) {
+				player.choice = gameInstance.gameLogic.getEntity(EntityNames.LIZARD);
+			} else if(spockButton.colisionRect.contains(input.x, input.y)) {
+				player.choice = gameInstance.gameLogic.getEntity(EntityNames.SPOCK);
+			} else {
+				return true;
 			}
 
+			playerTookTurn = true;
+			player.turnToPlay = false;
+			cpu.turnToPlay = true;
 		}
 
 		return true;
@@ -478,6 +256,7 @@ public class GameScreen extends AbstractScreen {
 	}
 
 	// Override InputAdapter TouchUp
+	//added click sound to buttons - Warnock
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		input.x = screenX;
 		input.y = screenY;
@@ -485,12 +264,14 @@ public class GameScreen extends AbstractScreen {
 		gameInstance.camera.unproject(input);
 
 		if (aboutButton.colisionRect.contains(input.x, input.y)) {
+			gameInstance.clickSound.play();
 			aboutButton.selected = true;
 		} else {
 			aboutButton.selected = false;
 		}
 
 		if (rulesButton.colisionRect.contains(input.x, input.y)) {
+			gameInstance.clickSound.play();
 			rulesButton.selected = true;
 		} else {
 			rulesButton.selected = false;
@@ -498,12 +279,14 @@ public class GameScreen extends AbstractScreen {
 
 		if (closeButton.colisionRect.contains(input.x, input.y)) {
 			closeButton.selected = true;
+			gameInstance.clickSound.play();
 		} else {
 			closeButton.selected = false;
 		}
 		
 		if (playAgainButton.colisionRect.contains(input.x, input.y)) {
 			playAgainButton.selected = true;
+			gameInstance.clickSound.play();
 		} else {
 			playAgainButton.selected = false;
 		}

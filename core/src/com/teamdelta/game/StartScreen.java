@@ -2,6 +2,7 @@ package com.teamdelta.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 
@@ -18,12 +19,12 @@ import com.badlogic.gdx.math.Vector3;
 public class StartScreen extends  AbstractScreen {
 
 	Vector3 input;
-	
+
+	Music startScreenMusic; //added start screen music - warnock
 	Button playGameButton;
 	Button aboutButton;
 	Button rulesButton;
 	Button exitButton;
-	
 	
 	public StartScreen(Main game) {
 		super(game);
@@ -35,6 +36,12 @@ public class StartScreen extends  AbstractScreen {
 	}
 
 	void loadAssets() {
+		//loaded sound file and set parameters - warnock
+		startScreenMusic = Gdx.audio.newMusic(Gdx.files.internal("rpsls.ogg"));
+		startScreenMusic.setVolume(0.25f);
+		startScreenMusic.play();
+		startScreenMusic.setPosition(1.8f);
+
 		playGameButton = new Button(atlas.findRegion("PLAYBUTTON"),
 				atlas.findRegion("PLAYBUTTONSELECTED"), 
 				new Rectangle(gameInstance.WIDTH/2 - 60, 300, 140, 50));
@@ -51,7 +58,6 @@ public class StartScreen extends  AbstractScreen {
 	}
 	@Override
 	public void show() {
-
 		Gdx.input.setInputProcessor(this);
 		Gdx.input.setCatchBackKey(true);
 		System.out.println("Menu show");
@@ -59,6 +65,8 @@ public class StartScreen extends  AbstractScreen {
 
 	@Override
 	public void render(float delta) {
+		batch.draw(atlas.findRegion("START_SCREEN_IMAGE"), 0, 0);//added start screen image - warnock
+
 		playGameButton.draw(batch);
 		aboutButton.draw(batch);
 		rulesButton.draw(batch);
@@ -110,26 +118,30 @@ public class StartScreen extends  AbstractScreen {
 			exitButton.selected = false;
 			
 			gameInstance.camera.unproject(input);
-			
+			// upon clicking a button stops the start screen music
 			if(playGameButton.colisionRect.contains(input.x, input.y)){
 				this.hide();
 				gameInstance.currentScreen = gameInstance.gameScreen;
 				gameInstance.currentScreen.show();
+				startScreenMusic.stop();
 			}
 			
 			if(aboutButton.colisionRect.contains(input.x, input.y)){
 				this.hide();
 				gameInstance.currentScreen = gameInstance.aboutScreen;
 				gameInstance.currentScreen.show();
+				startScreenMusic.stop();
 			}
 			
 			if(rulesButton.colisionRect.contains(input.x, input.y)){
 				this.hide();
 				gameInstance.currentScreen = gameInstance.rulesScreen;
 				gameInstance.currentScreen.show();
+				startScreenMusic.stop();
 			}
 			
 			if(exitButton.colisionRect.contains(input.x, input.y)){
+				startScreenMusic.stop();
 				dispose();
 				Gdx.app.exit();
 			}
@@ -143,25 +155,31 @@ public class StartScreen extends  AbstractScreen {
 		input.y = screenY;
 
 		gameInstance.camera.unproject(input);
+
+		//added click sound - warnock
 		if(playGameButton.colisionRect.contains(input.x, input.y)){
+			gameInstance.clickSound.play();
 			playGameButton.selected = true;
 		}else{
 			playGameButton.selected = false;
 		}
 		
 		if(aboutButton.colisionRect.contains(input.x, input.y)){
+			gameInstance.clickSound.play();
 			aboutButton.selected = true;
 		}else{
 			aboutButton.selected = false;
 		}
 		
 		if(rulesButton.colisionRect.contains(input.x, input.y)){
+			gameInstance.clickSound.play();
 			rulesButton.selected = true;
 		}else{
 			rulesButton.selected = false;
 		}
 		
 		if(exitButton.colisionRect.contains(input.x, input.y)){
+			gameInstance.clickSound.play();
 			exitButton.selected = true;
 		}else{
 			exitButton.selected = false;

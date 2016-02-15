@@ -44,21 +44,11 @@ public class RulesScreen extends AbstractScreen {
 						340, 50, 120, 40));
 		
 		//--Corrected spelling of strings
-		rockButton = new Button(atlas.findRegion("rock_missing"),
-				atlas.findRegion("rock_missing"), new Rectangle(
-						50, 350, 100, 150));
-		paperButton = new Button(atlas.findRegion("paper_missing"),
-				atlas.findRegion("paper_missing"), new Rectangle(
-						650, 350, 100, 150));
-		scissorsButton = new Button(atlas.findRegion("scissors_missing"),
-				atlas.findRegion("scissors_missing"), new Rectangle(
-						50, 150, 100, 150));
-		lizardButton = new Button(atlas.findRegion("lizard_missing"),
-				atlas.findRegion("lizard_missing"), new Rectangle(
-						650, 150, 100, 150));
-		spockButton = new Button(atlas.findRegion("spock_missing"),
-				atlas.findRegion("spock_missing"), new Rectangle(
-						350, 275, 100, 150));
+		rockButton 		= game.rockEntity.getButton();
+		paperButton 	= game.paperEntity.getButton();
+		scissorsButton 	= game.scissorsEntity.getButton();
+		lizardButton 	= game.lizardEntity.getButton();
+		spockButton 	= game.spockEntity.getButton();
 	}
 
 	@Override
@@ -255,7 +245,9 @@ public class RulesScreen extends AbstractScreen {
 
 		gameInstance.camera.unproject(input);
 
+		//added click sound - warnock
 		if (closeButton.colisionRect.contains(input.x, input.y)) {
+			gameInstance.clickSound.play();
 			closeButton.selected = true;
 		} else {
 			closeButton.selected = false;

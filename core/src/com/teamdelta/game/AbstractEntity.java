@@ -3,6 +3,7 @@ package com.teamdelta.game;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.teamdelta.game.entities.RPSLSEntity;
 
 /**
  * 
@@ -21,8 +22,7 @@ public abstract class AbstractEntity {
 	int winScore;
 	int loseScore;
 	int tieScore; //Edited by Jeff Kunert
-	enum Choices{ROCK, PAPER, SCISSORS, LIZARD, SPOCK};
-	Choices choice;
+	RPSLSEntity choice;//removed enum and made choice RPSLSEntity
 	TextureAtlas atlas;
 	
 	abstract void render(float timeSinceLastFrame, SpriteBatch bath);
