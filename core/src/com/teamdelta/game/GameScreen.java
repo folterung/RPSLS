@@ -20,6 +20,7 @@ import com.teamdelta.game.entities.EntityNames;
  * 
  * 2/9/16  - Fixed tieScore spelling errors - Dennis
  * 2/12/16 - Added non-image to buttons - Ismael
+ * 2/15/16 - Fixed boolean set for winner - Dennis
  */
 public class GameScreen extends AbstractScreen {
 	Button rockButton;
@@ -156,10 +157,14 @@ public class GameScreen extends AbstractScreen {
 	@Override
 	void update(float timeSinceLastFrame) {
 // calculate winner using new GameLogic class - warnock
+// Added in boolean set for the win, lose and tie - Bryant
 		if (playerTookTurn && cpuTookTurn && !gameover) {
 			int winnerValue = gameInstance.gameLogic.determineWinner(player.choice, cpu.choice);
 
 			isGameTied = false;
+			isCPUWin = false;
+			isPlayerWin = false;
+			
 			gameover = true;
 
 			if(winnerValue == -1) {
@@ -167,9 +172,11 @@ public class GameScreen extends AbstractScreen {
 				cpu.tieScore ++;
 				player.tieScore ++;
 			} else if(winnerValue == 0) {
+				isCPUWin= true;
 				cpu.winScore++;
 				player.loseScore++;
 			} else if(winnerValue == 1) {
+				isPlayerWin = true;
 				cpu.loseScore++;
 				player.winScore++;
 			}
