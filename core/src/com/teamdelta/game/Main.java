@@ -90,6 +90,7 @@ public class Main extends Game {
 		previousScreen = startScreen;
 		currentScreen = startScreen;
 		currentScreen.show();
+		
 	}
 
 	@Override
