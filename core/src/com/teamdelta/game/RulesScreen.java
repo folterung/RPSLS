@@ -44,11 +44,11 @@ public class RulesScreen extends AbstractScreen {
 						340, 50, 120, 40));
 		
 		//--Corrected spelling of strings
-		rockButton 		= game.rockEntity.getButton();
-		paperButton 	= game.paperEntity.getButton();
-		scissorsButton 	= game.scissorsEntity.getButton();
-		lizardButton 	= game.lizardEntity.getButton();
-		spockButton 	= game.spockEntity.getButton();
+		rockButton 		= game.gameScreen.gameModeManager.currentGameMode.rockEntity.getButton();
+		paperButton 	= game.gameScreen.gameModeManager.currentGameMode.paperEntity.getButton();
+		scissorsButton 	= game.gameScreen.gameModeManager.currentGameMode.scissorsEntity.getButton();
+		lizardButton 	= game.gameScreen.gameModeManager.currentGameMode.lizardEntity.getButton();
+		spockButton 	= game.gameScreen.gameModeManager.currentGameMode.spockEntity.getButton();
 	}
 
 	@Override

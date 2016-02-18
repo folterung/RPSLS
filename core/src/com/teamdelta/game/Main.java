@@ -10,8 +10,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.teamdelta.game.entities.EntityNames;
-import com.teamdelta.game.entities.RPSLSEntity;
 
 /**
  * 
@@ -34,9 +32,6 @@ public class Main extends Game {
 	Viewport viewport;
 	AssetManager assetMgr;
 
-	//--GameLogic
-	GameLogic gameLogic;
-
 	//--Screens
 	StartScreen startScreen;
 	GameScreen gameScreen;
@@ -48,13 +43,6 @@ public class Main extends Game {
 	//--Game assets
 	TextureAtlas gameAtlas;
 	Music clickSound;//changed Sound to Music - Warnock
-
-	//--Entity Information - warnock
-	RPSLSEntity rockEntity;
-	RPSLSEntity paperEntity;
-	RPSLSEntity scissorsEntity;
-	RPSLSEntity lizardEntity;
-	RPSLSEntity spockEntity;
 
 	float delta;
 	//
@@ -78,11 +66,7 @@ public class Main extends Game {
 		gameAtlas = assetMgr.get("game.pack", TextureAtlas.class);
 		clickSound = Gdx.audio.newMusic(Gdx.files.internal("buttonClick.mp3"));
 		clickSound.setVolume(0.15f);
-
-		createEntities();
-
-		//created new instance of GameLogic - Warnock
-		gameLogic = new GameLogic(this);
+		
 		startScreen = new StartScreen(this);
 		gameScreen = new GameScreen(this);
 		aboutScreen = new AboutScreen(this);
@@ -134,19 +118,5 @@ public class Main extends Game {
 		viewport.apply();
 	}
 
-	//create entities - Warnock
-	public void createEntities() {
-		String rock = EntityNames.ROCK.toString();
-		String paper = EntityNames.PAPER.toString();
-		String scissors = EntityNames.SCISSORS.toString();
-		String lizard = EntityNames.LIZARD.toString();
-		String spock = EntityNames.SPOCK.toString();
 
-		//Create RPSLSEntities
-		rockEntity 		= new RPSLSEntity(rock, gameAtlas.findRegion(rock));
-		paperEntity 	= new RPSLSEntity(paper, gameAtlas.findRegion(paper));
-		scissorsEntity 	= new RPSLSEntity(scissors, gameAtlas.findRegion(scissors));
-		lizardEntity 	= new RPSLSEntity(lizard, gameAtlas.findRegion(lizard));
-		spockEntity 	= new RPSLSEntity(spock, gameAtlas.findRegion(spock));
-	}
 }

@@ -10,10 +10,10 @@ import java.util.LinkedHashMap;
  * @author William Warnock
  */
 public class GameLogic {
-    private Main game;
+    private AbstractGameMode game;
     private LinkedHashMap<String, RPSLSEntity> entitiesMap = new LinkedHashMap<String, RPSLSEntity>();
 
-    public GameLogic(Main game) {
+    public GameLogic(AbstractGameMode game) {
         this.game = game;
 
         loadHashMap();
