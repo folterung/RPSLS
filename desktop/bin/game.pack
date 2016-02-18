@@ -1,3 +1,14 @@
+bigBangTheory.jpg
+format: RGBA8888
+filter: MipMapLinearLinear,Nearest
+repeat: none
+START_SCREEN_IMAGE
+rotate: false
+  xy: 0, 0
+  size: 800, 600
+  orig: 800, 600
+  offset: 0, 0
+  index: -1
 
 game.png
 format: RGBA8888
@@ -24,35 +35,35 @@ game_card
   orig: 329, 479
   offset: 0, 0
   index: -1
-lizard_missing
+LIZARD
   rotate: false
   xy: 0, 179
   size: 329, 479
   orig: 329, 479
   offset: 0, 0
   index: -1
-paper_missing
+PAPER
   rotate: false
   xy: 401, 981
   size: 329, 479
   orig: 329, 479
   offset: 0, 0
   index: -1
-rock_missing
+ROCK
   rotate: false
   xy: 731, 1461
   size: 329, 479
   orig: 329, 479
   offset: 0, 0
   index: -1
-scissors_missing
+SCISSORS
   rotate: false
   xy: 731, 981
   size: 329, 479
   orig: 329, 479
   offset: 0, 0
   index: -1
-spock_missing
+SPOCK
   rotate: false
   xy: 1061, 1461
   size: 329, 479

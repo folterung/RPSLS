@@ -1,6 +1,7 @@
 package com.teamdelta.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
@@ -20,6 +21,15 @@ import com.teamdelta.game.entities.EntityNames;
  * 
  * 2/9/16  - Fixed tieScore spelling errors - Dennis
  * 2/12/16 - Added non-image to buttons - Ismael
+ * 2/15/16 - Fixed boolean set for winner - Dennis
+ * 2/14/16 - calculate winner using new GameLogic class - warnock
+ * 2/14/16 - refactored to set player choice to corresponding RPSLSEntity - warnock
+ * 2/14/16 - added click sound to buttons - Warnock
+ * 2/16/16 - repositioned CPU Player Indicator to align with Player Indicator position - Warnock
+ * 2/16/16 - Added Images to placeholders - Warnock
+ * 2/17/16 - Changed Font color to Black - Warnock
+ * 2/17/16 - Added Background - Warnock
+ * 2/17/16 - Repositioned score for CPU - Warnock
  */
 public class GameScreen extends AbstractScreen {
 	Button rockButton;
@@ -41,6 +51,7 @@ public class GameScreen extends AbstractScreen {
 
 		input = new Vector3();
 		font = new BitmapFont(Gdx.files.internal("calibrismall.fnt"));
+		font.setColor(new Color(Color.BLACK));
 
 		player = new User(atlas);
 		cpu = new CPU(atlas);
@@ -86,6 +97,7 @@ public class GameScreen extends AbstractScreen {
 
 	@Override
 	public void render(float delta) {
+		renderBackground();
 		renderButtons();
 		renderScores();
 		renderFPS();
@@ -93,6 +105,10 @@ public class GameScreen extends AbstractScreen {
 		
 		player.skin.draw(batch);
 		cpu.skin.draw(batch);
+	}
+
+	void renderBackground() {
+		batch.draw(atlas.findRegion("ROCK_BACKGROUND"), 0, 0);
 	}
 
 	void renderButtons() {
@@ -115,9 +131,9 @@ public class GameScreen extends AbstractScreen {
 		font.draw(batch, "Losses:  " + player.loseScore, 50, 540);
 		font.draw(batch, "Ties:  " + player.tieScore, 50, 520); //Jeff Added Tie Score for cpu
 
-		font.draw(batch, "Wins:  " + cpu.winScore, 600, 560);
-		font.draw(batch, "Losses:  " + cpu.loseScore, 600, 540);
-		font.draw(batch, "Ties:  " + cpu.tieScore, 600, 520); //Jeff Added Tie Score for cpu
+		font.draw(batch, "Wins:  " + cpu.winScore, 650, 560);
+		font.draw(batch, "Losses:  " + cpu.loseScore, 650, 540);
+		font.draw(batch, "Ties:  " + cpu.tieScore, 650, 520); //Jeff Added Tie Score for cpu
 
 	}
 
@@ -137,12 +153,12 @@ public class GameScreen extends AbstractScreen {
 			font.draw(batch, "You chose: " + player.choice.getName(), 50, 600);
 		}
 		if(cpuTookTurn){
-			font.draw(batch, "CPU chose: " + cpu.choice.getName(), 600, 600);
+			font.draw(batch, "CPU chose: " + cpu.choice.getName(), 650, 600);
 		}
 		if(gameover){
 			font.draw(batch, "Play Again?", 355, 230);//Ismael added play again message when game is over
 			if(isGameTied){
-				font.draw(batch, "Game is tied", 320, 620);
+				font.draw(batch, "Game is tied", 350, 620);
 			}
 			if(isPlayerWin){
 				font.draw(batch, "You won this round", 320, 620);
@@ -156,10 +172,14 @@ public class GameScreen extends AbstractScreen {
 	@Override
 	void update(float timeSinceLastFrame) {
 // calculate winner using new GameLogic class - warnock
+// Added in boolean set for the win, lose and tie - Bryant
 		if (playerTookTurn && cpuTookTurn && !gameover) {
 			int winnerValue = gameInstance.gameLogic.determineWinner(player.choice, cpu.choice);
 
 			isGameTied = false;
+			isCPUWin = false;
+			isPlayerWin = false;
+			
 			gameover = true;
 
 			if(winnerValue == -1) {
@@ -167,11 +187,15 @@ public class GameScreen extends AbstractScreen {
 				cpu.tieScore ++;
 				player.tieScore ++;
 			} else if(winnerValue == 0) {
+				isCPUWin= true;
 				cpu.winScore++;
 				player.loseScore++;
+				isCPUWin = true;
 			} else if(winnerValue == 1) {
+				isPlayerWin = true;
 				cpu.loseScore++;
 				player.winScore++;
+				isPlayerWin = true;
 			}
 		}
 

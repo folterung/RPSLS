@@ -19,7 +19,7 @@ public class CPU extends AbstractEntity {
 	public CPU(TextureAtlas atlas){
 		skin = new Sprite(atlas.findRegion("red"));
 		skin.setSize(100, 200);
-		skin.setPosition(500, 600);
+		skin.setPosition(650, 600);
 	}
 
 	@Override

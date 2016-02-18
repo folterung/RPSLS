@@ -46,4 +46,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 /build/
+.idea/workspace.xml
 .idea
+.gradle
+*.class

@@ -13,7 +13,9 @@ import com.badlogic.gdx.math.Vector3;
  * @since 2/9/16
  * 
  * The GameScreen class controls the game play and statistics display.
- * 
+ * 2/14/16 - added start screen music - warnock
+ * 2/14/16 - added start screen image - warnock
+ * 2/14/16 - added click sound - warnock
  */
 
 public class StartScreen extends  AbstractScreen {
