@@ -2,6 +2,7 @@ package com.teamdelta.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
@@ -21,6 +22,7 @@ import com.teamdelta.game.entities.EntityNames;
  * 2/9/16  - Fixed tieScore spelling errors - Dennis
  * 2/12/16 - Added non-image to buttons - Ismael
  * 2/15/16 - Fixed boolean set for winner - Dennis
+ * 2/17/16 - Added graphic for winner - Dennis
  */
 public class GameScreen extends AbstractScreen {
 	Button rockButton;
@@ -146,12 +148,12 @@ public class GameScreen extends AbstractScreen {
 				font.draw(batch, "Game is tied", 320, 620);
 			}
 			if(isPlayerWin){
-				font.draw(batch, "You won this round", 320, 620);
+				//font.draw(batch, "You won this round", 320, 620);
+				batch.draw(atlas.findRegion("winner"),  200, 450);		// Dennis added graphic for winner.
 			}
 			if(isCPUWin){
 				font.draw(batch, "CPU won this round", 320, 620);
-			}
-		}
+			}		}
 	}
 
 	@Override

@@ -1,3 +1,15 @@
+winner.png
+format: RGBA8888
+filter: MipMapLinearLinear,Nearest
+repeat: none
+winner
+rotate: false
+  xy: 0, 0
+  size: 400, 129
+  orig: 400, 129
+  offset: 0, 0
+  index: -1
+  
 bigBangTheory.jpg
 format: RGBA8888
 filter: MipMapLinearLinear,Nearest
