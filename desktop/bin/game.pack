@@ -1,71 +1,52 @@
-bigBangTheory.jpg
-format: RGBA8888
-filter: MipMapLinearLinear,Nearest
-repeat: none
-START_SCREEN_IMAGE
-rotate: false
-  xy: 0, 0
-  size: 800, 600
-  orig: 800, 600
-  offset: 0, 0
-  index: -1
-
 game.png
 format: RGBA8888
 filter: MipMapLinearLinear,Nearest
 repeat: none
 green
   rotate: false
-  xy: 0, 1300
+  xy: 440, 1900
   size: 400, 640
   orig: 400, 640
   offset: 0, 0
   index: -1
 red
   rotate: false
-  xy: 0, 659
+  xy: 8, 1900
   size: 400, 640
   orig: 400, 640
   offset: 0, 0
   index: -1
-game_card
-  rotate: false
-  xy: 401, 1461
-  size: 329, 479
-  orig: 329, 479
-  offset: 0, 0
-  index: -1
 LIZARD
   rotate: false
-  xy: 0, 179
+  xy: 1004, 1038
   size: 329, 479
   orig: 329, 479
   offset: 0, 0
   index: -1
 PAPER
   rotate: false
-  xy: 401, 981
+  xy: 340, 1038
   size: 329, 479
   orig: 329, 479
   offset: 0, 0
   index: -1
 ROCK
   rotate: false
-  xy: 731, 1461
+  xy: 8, 1038
   size: 329, 479
   orig: 329, 479
   offset: 0, 0
   index: -1
 SCISSORS
   rotate: false
-  xy: 731, 981
+  xy: 672, 1038
   size: 329, 479
   orig: 329, 479
   offset: 0, 0
   index: -1
 SPOCK
   rotate: false
-  xy: 1061, 1461
+  xy: 1336, 1038
   size: 329, 479
   orig: 329, 479
   offset: 0, 0
@@ -79,71 +60,85 @@ blank
   index: -1
 ABOUTBUTTON
   rotate: false
-  xy: 1391, 1762
+  xy: 12, 1528
   size: 380, 178
   orig: 380, 178
   offset: 0, 0
   index: -1
 ABOUTBUTTONSELECTED
   rotate: false
-  xy: 401, 802
+  xy: 12, 1716
   size: 380, 178
   orig: 380, 178
   offset: 0, 0
   index: -1
 CLOSEBUTTON
   rotate: false
-  xy: 1391, 1583
+  xy: 1184, 1528
   size: 380, 178
   orig: 380, 178
   offset: 0, 0
   index: -1
 CLOSEBUTTONSELECTED
   rotate: false
-  xy: 401, 623
+  xy: 1184, 1716
   size: 380, 178
   orig: 380, 178
   offset: 0, 0
   index: -1
 EXITBUTTON
   rotate: false
-  xy: 0, 0
+  xy: 1572, 1528
   size: 380, 178
   orig: 380, 178
   offset: 0, 0
   index: -1
 EXITBUTTONSELECTED
   rotate: false
-  xy: 1391, 1404
+  xy: 1572, 1716
   size: 380, 178
   orig: 380, 178
   offset: 0, 0
   index: -1
 PLAYBUTTON
   rotate: false
-  xy: 1362, 1225
+  xy: 404, 1528
   size: 380, 178
   orig: 380, 178
   offset: 0, 0
   index: -1
 PLAYBUTTONSELECTED
   rotate: false
-  xy: 1362, 1046
+  xy: 404, 1716
   size: 380, 178
   orig: 380, 178
   offset: 0, 0
   index: -1
 RULESBUTTON
   rotate: false
-  xy: 330, 444
+  xy: 792, 1528
   size: 380, 178
   orig: 380, 178
   offset: 0, 0
   index: -1
 RULESBUTTONSELECTED
   rotate: false
-  xy: 330, 265
+  xy: 792, 1716
   size: 380, 178
   orig: 380, 178
+  offset: 0, 0
+  index: -1
+ROCK_BACKGROUND
+  rotate: false
+  xy: 855, 1900
+  size: 1024, 768
+  orig: 1024, 768
+  offset: 0, 0
+  index: -1
+START_SCREEN_IMAGE
+  rotate: false
+  xy: 16, 2556
+  size: 800, 600
+  orig: 800, 600
   offset: 0, 0
   index: -1

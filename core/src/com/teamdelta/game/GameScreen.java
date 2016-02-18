@@ -49,6 +49,8 @@ public class GameScreen extends AbstractScreen {
 	BitmapFont font;
 	Vector3 input;
 	boolean playerTookTurn, cpuTookTurn, gameover, isGameTied, isPlayerWin, isCPUWin;
+	float cpuTurnTimer;//--Ismael added delay timer for CPU
+	
 	public GameScreen(Main gameS) {
 		super(gameS);
 
@@ -147,16 +149,16 @@ public class GameScreen extends AbstractScreen {
 
 	void renderMessages() {
 		if(player.turnToPlay){
-			font.draw(batch, "Your Turn", 50, 600);
+			font.draw(batch, "Your Turn", 350, 600);
 		}
 		if(cpu.turnToPlay){
-			font.draw(batch, "CPU's Turn", 50, 600);
+			font.draw(batch, "CPU's Turn", 350, 600);
 		}
 		if(playerTookTurn){
-			font.draw(batch, "You chose: " + player.choice.getName(), 50, 600);
+			font.draw(batch, "You chose: " + player.choice.getName(), 180, 500);
 		}
 		if(cpuTookTurn){
-			font.draw(batch, "CPU chose: " + cpu.choice.getName(), 650, 600);
+			font.draw(batch, "CPU chose: " + cpu.choice.getName(), 470, 500);
 		}
 		if(gameover){
 			font.draw(batch, "Play Again?", 355, 230);//Ismael added play again message when game is over
@@ -203,9 +205,13 @@ public class GameScreen extends AbstractScreen {
 		}
 
 		if (playerTookTurn && cpu.turnToPlay && !cpuTookTurn) {
-			cpu.choice = gameInstance.gameLogic.getEntity();
-			cpuTookTurn = true;
-			cpu.turnToPlay = false;
+			cpuTurnTimer += timeSinceLastFrame;
+			if(cpuTurnTimer >= 2){
+				cpu.choice = gameInstance.gameLogic.getEntity();
+				cpuTookTurn = true;
+				cpu.turnToPlay = false;
+				cpuTurnTimer = 0;
+			}
 		}
 
 	}
