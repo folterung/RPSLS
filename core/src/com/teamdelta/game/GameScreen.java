@@ -31,6 +31,7 @@ import com.teamdelta.game.entities.EntityNames;
  * 2/17/16 - Changed Font color to Black - Warnock
  * 2/17/16 - Added Background - Warnock
  * 2/17/16 - Repositioned score for CPU - Warnock
+ * 2/18/16 - added delay for CPU turn - Ismael
 =======
 >>>>>>> 1d932b532b0df74d8baf727851e302726dcd93c5
  */
@@ -155,10 +156,10 @@ public class GameScreen extends AbstractScreen {
 			font.draw(batch, "CPU's Turn", 350, 600);
 		}
 		if(playerTookTurn){
-			font.draw(batch, "You chose: " + player.choice.getName(), 180, 500);
+			font.draw(batch, "You chose: " + player.choice.getName(), 180, 500); //-- Adjusted Positioning - Ismael
 		}
 		if(cpuTookTurn){
-			font.draw(batch, "CPU chose: " + cpu.choice.getName(), 470, 500);
+			font.draw(batch, "CPU chose: " + cpu.choice.getName(), 470, 500); //-- Adjusted Positioning - Ismael
 		}
 		if(gameover){
 			font.draw(batch, "Play Again?", 355, 230);//Ismael added play again message when game is over
@@ -205,12 +206,12 @@ public class GameScreen extends AbstractScreen {
 		}
 
 		if (playerTookTurn && cpu.turnToPlay && !cpuTookTurn) {
-			cpuTurnTimer += timeSinceLastFrame;
+			cpuTurnTimer += timeSinceLastFrame; // --Delay timer
 			if(cpuTurnTimer >= 2){
 				cpu.choice = gameInstance.gameLogic.getEntity();
 				cpuTookTurn = true;
 				cpu.turnToPlay = false;
-				cpuTurnTimer = 0;
+				cpuTurnTimer = 0; //--Reset timer
 			}
 		}
 
