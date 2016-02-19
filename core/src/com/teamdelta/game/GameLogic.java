@@ -8,6 +8,7 @@ import java.util.LinkedHashMap;
 
 /**
  * @author William Warnock
+ * 2/18/16 Ismael added playWinnerSound() method
  */
 public class GameLogic {
     private Main game;
@@ -60,8 +61,105 @@ public class GameLogic {
         } else if(cpuEntity.isFoe(playerEntity)) {
             winner = 1;
         }
-
+        playWinnerSound(playerEntity, cpuEntity);
         return winner;
+    }
+    
+    /* 
+     * Play short sound clip of Winner
+     * @param playerEntity RPSLSEntity representing the user's selection
+     * @param cpuEntity RPSLSEntity representing the cpu's selection  
+     */
+    private void playWinnerSound(RPSLSEntity playerEntity, RPSLSEntity cpuEntity){
+    	if(playerEntity.getName().equals("ROCK")){
+    		if(cpuEntity.getName().equals("ROCK")){
+    			
+    		}
+			if(cpuEntity.getName().equals("PAPER")){
+			    game.paperCoversRock.play(0.5f);			
+			}
+			if(cpuEntity.getName().equals("SCISSORS")){
+				game.rockCrushesScissors.play(0.5f);
+			}
+			if(cpuEntity.getName().equals("LIZARD")){
+				game.rockCrushesLizard.play(0.5f);
+			}
+			if(cpuEntity.getName().equals("SPOCK")){
+				game.spockVaporizesRock.play(0.5f);
+			}
+    	}
+    	
+    	if(playerEntity.getName().equals("PAPER")){
+    		if(cpuEntity.getName().equals("ROCK")){
+    			game.paperCoversRock.play(0.5f);
+    		}
+			if(cpuEntity.getName().equals("PAPER")){
+			    			
+			}
+			if(cpuEntity.getName().equals("SCISSORS")){
+				game.scissorsCutPaper.play(0.5f);
+			}
+			if(cpuEntity.getName().equals("LIZARD")){
+				game.lizardEatsPaper.play(0.5f);
+			}
+			if(cpuEntity.getName().equals("SPOCK")){
+				game.paperDisprovesSpock.play(0.5f);
+			}
+    	}
+    	
+    	if(playerEntity.getName().equals("SCISSORS")){
+    		if(cpuEntity.getName().equals("ROCK")){
+    			game.rockCrushesScissors.play(0.5f);
+    		}
+			if(cpuEntity.getName().equals("PAPER")){
+				game.scissorsCutPaper.play(0.5f);			
+			}
+			if(cpuEntity.getName().equals("SCISSORS")){
+				
+			}
+			if(cpuEntity.getName().equals("LIZARD")){
+				game.scissorsDecapitateLizard.play(0.5f);
+			}
+			if(cpuEntity.getName().equals("SPOCK")){
+				game.spockSmashesScissors.play(0.5f);
+			}
+    	}
+    	
+    	if(playerEntity.getName().equals("LIZARD")){
+    		if(cpuEntity.getName().equals("ROCK")){
+    			game.rockCrushesLizard.play(0.5f);
+    		}
+			if(cpuEntity.getName().equals("PAPER")){
+				game.lizardEatsPaper.play(0.5f);			
+			}
+			if(cpuEntity.getName().equals("SCISSORS")){
+				game.scissorsDecapitateLizard.play(0.5f);
+			}
+			if(cpuEntity.getName().equals("LIZARD")){
+				
+			}
+			if(cpuEntity.getName().equals("SPOCK")){
+				game.lizardPoisonsSpock.play(0.5f);
+			}
+    	}
+    	
+    	if(playerEntity.getName().equals("SPOCK")){
+    		if(cpuEntity.getName().equals("ROCK")){
+    			game.spockVaporizesRock.play(0.5f);
+    		}
+			if(cpuEntity.getName().equals("PAPER")){
+				game.paperDisprovesSpock.play(0.5f);			
+			}
+			if(cpuEntity.getName().equals("SCISSORS")){
+				game.spockSmashesScissors.play(0.5f);
+			}
+			if(cpuEntity.getName().equals("LIZARD")){
+				game.lizardPoisonsSpock.play(0.5f);
+			}
+			if(cpuEntity.getName().equals("SPOCK")){
+				
+			}
+    	}
     }
 
     /**

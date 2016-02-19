@@ -1,6 +1,7 @@
 package com.teamdelta.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.MathUtils;
@@ -23,6 +24,15 @@ import com.teamdelta.game.entities.EntityNames;
  * 2/12/16 - Added non-image to buttons - Ismael
  * 2/15/16 - Fixed boolean set for winner - Dennis
  * 2/17/16 - Added graphic for winner - Dennis
+ * 2/14/16 - calculate winner using new GameLogic class - warnock
+ * 2/14/16 - refactored to set player choice to corresponding RPSLSEntity - warnock
+ * 2/14/16 - added click sound to buttons - Warnock
+ * 2/16/16 - repositioned CPU Player Indicator to align with Player Indicator position - Warnock
+ * 2/16/16 - Added Images to placeholders - Warnock
+ * 2/17/16 - Changed Font color to Black - Warnock
+ * 2/17/16 - Added Background - Warnock
+ * 2/17/16 - Repositioned score for CPU - Warnock
+ * 2/18/16 - added delay for CPU turn - Ismael
  */
 public class GameScreen extends AbstractScreen {
 	Button rockButton;
@@ -39,11 +49,14 @@ public class GameScreen extends AbstractScreen {
 	BitmapFont font;
 	Vector3 input;
 	boolean playerTookTurn, cpuTookTurn, gameover, isGameTied, isPlayerWin, isCPUWin;
+	float cpuTurnTimer;//--Ismael added delay timer for CPU
+	
 	public GameScreen(Main gameS) {
 		super(gameS);
 
 		input = new Vector3();
 		font = new BitmapFont(Gdx.files.internal("calibrismall.fnt"));
+		font.setColor(new Color(Color.BLACK));
 
 		player = new User(atlas);
 		cpu = new CPU(atlas);
@@ -89,6 +102,7 @@ public class GameScreen extends AbstractScreen {
 
 	@Override
 	public void render(float delta) {
+		renderBackground();
 		renderButtons();
 		renderScores();
 		renderFPS();
@@ -96,6 +110,10 @@ public class GameScreen extends AbstractScreen {
 		
 		player.skin.draw(batch);
 		cpu.skin.draw(batch);
+	}
+
+	void renderBackground() {
+		batch.draw(atlas.findRegion("ROCK_BACKGROUND"), 0, 0);
 	}
 
 	void renderButtons() {
@@ -118,9 +136,9 @@ public class GameScreen extends AbstractScreen {
 		font.draw(batch, "Losses:  " + player.loseScore, 50, 540);
 		font.draw(batch, "Ties:  " + player.tieScore, 50, 520); //Jeff Added Tie Score for cpu
 
-		font.draw(batch, "Wins:  " + cpu.winScore, 600, 560);
-		font.draw(batch, "Losses:  " + cpu.loseScore, 600, 540);
-		font.draw(batch, "Ties:  " + cpu.tieScore, 600, 520); //Jeff Added Tie Score for cpu
+		font.draw(batch, "Wins:  " + cpu.winScore, 650, 560);
+		font.draw(batch, "Losses:  " + cpu.loseScore, 650, 540);
+		font.draw(batch, "Ties:  " + cpu.tieScore, 650, 520); //Jeff Added Tie Score for cpu
 
 	}
 
@@ -131,21 +149,21 @@ public class GameScreen extends AbstractScreen {
 
 	void renderMessages() {
 		if(player.turnToPlay){
-			font.draw(batch, "Your Turn", 50, 600);
+			font.draw(batch, "Your Turn", 350, 600);
 		}
 		if(cpu.turnToPlay){
-			font.draw(batch, "CPU's Turn", 50, 600);
+			font.draw(batch, "CPU's Turn", 350, 600);
 		}
 		if(playerTookTurn){
-			font.draw(batch, "You chose: " + player.choice.getName(), 50, 600);
+			font.draw(batch, "You chose: " + player.choice.getName(), 180, 500); //-- Adjusted Positioning - Ismael
 		}
 		if(cpuTookTurn){
-			font.draw(batch, "CPU chose: " + cpu.choice.getName(), 600, 600);
+			font.draw(batch, "CPU chose: " + cpu.choice.getName(), 470, 500); //-- Adjusted Positioning - Ismael
 		}
 		if(gameover){
 			font.draw(batch, "Play Again?", 355, 230);//Ismael added play again message when game is over
 			if(isGameTied){
-				font.draw(batch, "Game is tied", 320, 620);
+				font.draw(batch, "Game is tied", 350, 620);
 			}
 			if(isPlayerWin){
 				//font.draw(batch, "You won this round", 320, 620);
@@ -177,17 +195,23 @@ public class GameScreen extends AbstractScreen {
 				isCPUWin= true;
 				cpu.winScore++;
 				player.loseScore++;
+				isCPUWin = true;
 			} else if(winnerValue == 1) {
 				isPlayerWin = true;
 				cpu.loseScore++;
 				player.winScore++;
+				isPlayerWin = true;
 			}
 		}
 
 		if (playerTookTurn && cpu.turnToPlay && !cpuTookTurn) {
-			cpu.choice = gameInstance.gameLogic.getEntity();
-			cpuTookTurn = true;
-			cpu.turnToPlay = false;
+			cpuTurnTimer += timeSinceLastFrame; // --Delay timer
+			if(cpuTurnTimer >= 2){
+				cpu.choice = gameInstance.gameLogic.getEntity();
+				cpuTookTurn = true;
+				cpu.turnToPlay = false;
+				cpuTurnTimer = 0; //--Reset timer
+			}
 		}
 
 	}

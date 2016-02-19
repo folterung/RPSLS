@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -24,7 +25,7 @@ import com.teamdelta.game.entities.RPSLSEntity;
  * @since 2/9/16
  * 
  * The Game class controls the game.
- * 
+ * 2/18/16 - added sound assets - Ismael
  */
 
 public class Main extends Game {
@@ -48,6 +49,17 @@ public class Main extends Game {
 	//--Game assets
 	TextureAtlas gameAtlas;
 	Music clickSound;//changed Sound to Music - Warnock
+	//Sounds played for winner of round - Ismael
+	Sound rockCrushesLizard;
+	Sound rockCrushesScissors;
+	Sound paperCoversRock;
+	Sound paperDisprovesSpock;
+	Sound scissorsDecapitateLizard;
+	Sound scissorsCutPaper;
+	Sound lizardEatsPaper;
+	Sound lizardPoisonsSpock;
+	Sound spockVaporizesRock;
+	Sound spockSmashesScissors;
 
 	//--Entity Information - warnock
 	RPSLSEntity rockEntity;
@@ -78,6 +90,16 @@ public class Main extends Game {
 		gameAtlas = assetMgr.get("game.pack", TextureAtlas.class);
 		clickSound = Gdx.audio.newMusic(Gdx.files.internal("buttonClick.mp3"));
 		clickSound.setVolume(0.15f);
+		rockCrushesLizard =  Gdx.audio.newSound(Gdx.files.internal("ROCKLIZARD.ogg"));
+		rockCrushesScissors = Gdx.audio.newSound(Gdx.files.internal("ROCKSCISSORS.ogg"));
+		paperCoversRock = Gdx.audio.newSound(Gdx.files.internal("PAPERROCK.ogg"));
+		paperDisprovesSpock = Gdx.audio.newSound(Gdx.files.internal("PAPERSPOCK.ogg"));
+		scissorsDecapitateLizard = Gdx.audio.newSound(Gdx.files.internal("SCISSORSLIZARD.ogg"));
+		scissorsCutPaper = Gdx.audio.newSound(Gdx.files.internal("SCISSORSPAPER.ogg"));
+		lizardEatsPaper = Gdx.audio.newSound(Gdx.files.internal("LIZARDPAPER.ogg"));
+		lizardPoisonsSpock = Gdx.audio.newSound(Gdx.files.internal("LIZARDSPOCK.ogg"));
+		spockVaporizesRock = Gdx.audio.newSound(Gdx.files.internal("SPOCKROCK.ogg"));
+		spockSmashesScissors = Gdx.audio.newSound(Gdx.files.internal("SPOCKSCISSORS.ogg"));
 
 		createEntities();
 

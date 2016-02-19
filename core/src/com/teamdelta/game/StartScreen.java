@@ -13,7 +13,10 @@ import com.badlogic.gdx.math.Vector3;
  * @since 2/9/16
  * 
  * The GameScreen class controls the game play and statistics display.
- * 
+ * 2/14/16 - added start screen music - warnock
+ * 2/14/16 - added start screen image - warnock
+ * 2/14/16 - added click sound - warnock
+ * 2/18/16 - modified intro sound clip - Ismael
  */
 
 public class StartScreen extends  AbstractScreen {
@@ -37,7 +40,7 @@ public class StartScreen extends  AbstractScreen {
 
 	void loadAssets() {
 		//loaded sound file and set parameters - warnock
-		startScreenMusic = Gdx.audio.newMusic(Gdx.files.internal("rpsls.ogg"));
+		startScreenMusic = Gdx.audio.newMusic(Gdx.files.internal("INTRO.ogg"));//--Ismael Changed to shorter intro clip
 		startScreenMusic.setVolume(0.25f);
 		startScreenMusic.play();
 		startScreenMusic.setPosition(1.8f);
