@@ -47,22 +47,37 @@ public class AboutScreen extends AbstractScreen{
 
 	/**
 	 * The render method paints the screen. Set all needed fields.
+	 * 
+	 * @Update 2/17/16 
+	 * Jacob added developer history and 
+	 * modified current version and layout
+	 * 
+	 * 
 	 */
 	@Override
 	public void render(float delta) {
 		bigFont.draw(batch, "Rock, Paper, Scissors, Lizard, Spock", 220, 600);
 		bigFont.draw(batch, "Developed by Team Delta", 245, 570);
 		
-		smallFont.draw(batch, "Team Lead: ", 250, 500-20);
-		smallFont.draw(batch, "Jeffrey Kunert", 250, 480-20);
-		smallFont.draw(batch, "Project Manager: ", 250, 440-20);
-		smallFont.draw(batch, "Dennis Bryant", 250, 420-20);
-		smallFont.draw(batch, "Programming Lead: ", 250, 380-20);
-		smallFont.draw(batch, "Ismael Poteau", 250, 360-20);
-		smallFont.draw(batch, "UI design and QA", 250, 320-20);
-		smallFont.draw(batch, "Jacob Herritt", 250, 300-20);
-		smallFont.draw(batch, "William Warnock", 250, 280-20);
-		smallFont.draw(batch, "Version 1.0.0.0",  250, 240-20);
+		smallFont.draw(batch, "Team Lead: ", 150, 500-20);
+		smallFont.draw(batch, "Jeffrey Kunert", 150, 480-20);
+		smallFont.draw(batch, "Project Manager: ", 150, 440-20);
+		smallFont.draw(batch, "Dennis Bryant", 150, 420-20);
+		smallFont.draw(batch, "Programming Lead: ", 150, 380-20);
+		smallFont.draw(batch, "Ismael Poteau", 150, 360-20);
+		smallFont.draw(batch, "UI design and QA", 150, 320-20);
+		smallFont.draw(batch, "Jacob Herritt", 150, 300-20);
+		smallFont.draw(batch, "William Warnock", 150, 280-20);
+		smallFont.draw(batch, "Version 2.0.0.0",  150, 240-20);
+		
+		smallFont.draw(batch, "Rock Paper Scissors Lizard Spock is a game", 400, 500-20);
+		smallFont.draw(batch, "created by Sam Kass and Karen Bryla in order", 400, 480-20);
+		smallFont.draw(batch, "to reduce the probability that the game would", 400, 460-20);
+		smallFont.draw(batch, "result in a tie.", 400, 440-20);
+		smallFont.draw(batch, "The new spin on this well-known game provides", 400, 400-20);
+		smallFont.draw(batch, "players with more options to enhance this", 400, 380-20);
+		smallFont.draw(batch, "classic game.", 400, 360-20);
+		
 		
 		closeButton.draw(batch);
 		
