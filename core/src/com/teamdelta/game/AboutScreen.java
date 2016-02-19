@@ -18,6 +18,7 @@ import com.badlogic.gdx.math.Vector3;
  */
 public class AboutScreen extends AbstractScreen{
 	Texture credits;
+	Texture background;
 	BitmapFont bigFont;
 	BitmapFont smallFont;
 	Button closeButton;
@@ -56,6 +57,11 @@ public class AboutScreen extends AbstractScreen{
 	 */
 	@Override
 	public void render(float delta) {
+		
+		//Jacob Added Background image 2/18/16
+		background = new Texture(Gdx.files.internal("Slate_Background.jpg"));
+		batch.draw(background,  0,  0);
+		
 		bigFont.draw(batch, "Rock, Paper, Scissors, Lizard, Spock", 220, 600);
 		bigFont.draw(batch, "Developed by Team Delta", 245, 570);
 		
