@@ -29,6 +29,7 @@ public class StartScreen extends  AbstractScreen {
 	Button aboutButton;
 	Button rulesButton;
 	Button exitButton;
+
 	
 	public StartScreen(Main game) {
 		super(game);

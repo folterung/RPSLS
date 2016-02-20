@@ -1,6 +1,8 @@
 package com.teamdelta.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
@@ -28,16 +30,34 @@ public class RulesScreen extends AbstractScreen {
 	BitmapFont bigFont;
 	TextureRegion greenHighlight;
 	TextureRegion redHighlight;
+	
+	//Added Sound Files
+	Sound explanation;
+	Sound rockClick;
+	Sound paperClick;
+	Sound scissorsClick;
+	Sound lizardClick;
+	Sound spockClick;
+	
 	Vector3 input;
 
 	public RulesScreen(Main game) {
 		super(game);
+		
+		//Added Load Sound to load sound on game
+		loadSound();
+	
 		input = new Vector3();
-
+		
+		
+		
 		greenHighlight = atlas.findRegion("green");
 		redHighlight = atlas.findRegion("red");
 		bigFont = new BitmapFont(Gdx.files.internal("calibri.fnt"));
 		smallFont = new BitmapFont(Gdx.files.internal("calibrismall.fnt"));
+		
+
+
 
 		closeButton = new Button(atlas.findRegion("CLOSEBUTTON"),
 				atlas.findRegion("CLOSEBUTTONSELECTED"), new Rectangle(
@@ -51,15 +71,36 @@ public class RulesScreen extends AbstractScreen {
 		spockButton 	= game.spockEntity.getButton();
 	}
 
+
+		
+	
 	@Override
 	public void show() {
 		Gdx.input.setInputProcessor(this);
 		Gdx.input.setCatchBackKey(true);
+		explanation.play(); //on entrance of rulesScreen
+		
 	}
-
+	void renderBackground() {
+		batch.draw(atlas.findRegion("ROCK_BACKGROUND"), 0, 0);
+	}
+	
+	//loadSound added for loading the sounds
+	void loadSound(){
+		//Loading assets for sound on Rules Screen
+		explanation = Gdx.audio.newSound(Gdx.files.internal("ShortExp.mp3"));
+		rockClick = Gdx.audio.newSound(Gdx.files.internal("Rock_Click.mp3"));
+		paperClick = Gdx.audio.newSound(Gdx.files.internal("Paper_Click.mp3"));
+		scissorsClick = Gdx.audio.newSound(Gdx.files.internal("Scissors_Click.mp3"));
+		lizardClick = Gdx.audio.newSound(Gdx.files.internal("Lizard_Click.mp3"));
+		spockClick = Gdx.audio.newSound(Gdx.files.internal("Spock_Click.mp3"));
+	}
 	@Override
 	public void render(float delta) {
+		renderBackground();
 		renderMessage();
+		bigFont.setColor(new Color(Color.BLACK));
+		smallFont.setColor(new Color(Color.BLACK));
 		if (rockButton.selected) {
 			batch.draw(redHighlight, scissorsButton.colisionRect.x,
 					scissorsButton.colisionRect.y,
@@ -166,29 +207,32 @@ public class RulesScreen extends AbstractScreen {
 		bigFont.draw(batch, "Click a character to check how it wins", 200, 580);
 		if(rockButton.selected){
 			bigFont.draw(batch, "Rock:", 350, 210);
-			smallFont.draw(batch, "crushes lizard", 350, 180);
-			smallFont.draw(batch, "crushes scissors", 350, 160);
+			smallFont.draw(batch, "Crushes Lizard", 350, 180);
+			smallFont.draw(batch, "Crushes Scissors", 350, 160);
+		
 		}
 		if(paperButton.selected){
 			bigFont.draw(batch, "Paper:", 350, 210);
-			smallFont.draw(batch, "dispproves Spock", 350, 180);
-			smallFont.draw(batch, "covers rock", 350, 160);
+			smallFont.draw(batch, "Covers Rock", 350, 180);
+			smallFont.draw(batch, "Dispproves Spock", 350, 160);
+			//Re-arranged lines to match audio
+			
 		}
 		if(scissorsButton.selected){
 			bigFont.draw(batch, "Scissors:", 350, 210);
-			smallFont.draw(batch, "cuts paper", 350, 180);
-			smallFont.draw(batch, "decapitates lizard", 350, 160);
+			smallFont.draw(batch, "Cuts Paper", 350, 180);
+			smallFont.draw(batch, "Decapitates Lizard", 350, 160);
 		}
 		if(lizardButton.selected){
 			bigFont.draw(batch, "Lizard", 350, 210);
-			smallFont.draw(batch, "poisons Spock", 350, 180);
-			smallFont.draw(batch, "eats paper", 350, 160);
+			smallFont.draw(batch, "Poisons Spock", 350, 180);
+			smallFont.draw(batch, "Eats Paper", 350, 160);
 		}
 		
 		if(spockButton.selected){
 			bigFont.draw(batch, "Spock:", 350, 210);
-			smallFont.draw(batch, "smashes scissors", 350, 180);
-			smallFont.draw(batch, "vaporizes rock", 350, 160);
+			smallFont.draw(batch, "Smashes Scissors", 350, 180);
+			smallFont.draw(batch, "Vaporizes Rock", 350, 160);
 		}
 	}
 	@Override
@@ -277,7 +321,23 @@ public class RulesScreen extends AbstractScreen {
 		} else {
 			spockButton.selected = false;
 		}
-
+		
+		//Added in sounds for button clicks -jeff
+		if (rockButton.colisionRect.contains(input.x, input.y)) {
+			rockClick.play();
+		}
+		if (paperButton.colisionRect.contains(input.x, input.y)) {
+			paperClick.play();
+		}
+		if (scissorsButton.colisionRect.contains(input.x, input.y)) {
+			scissorsClick.play();
+		}
+		if (lizardButton.colisionRect.contains(input.x, input.y)) {
+			lizardClick.play();
+		}
+		if (spockButton.colisionRect.contains(input.x, input.y)) {
+			spockClick.play();
+		}
 		return true;
 	}
 

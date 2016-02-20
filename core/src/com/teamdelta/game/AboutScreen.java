@@ -2,6 +2,7 @@ package com.teamdelta.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -23,6 +24,8 @@ public class AboutScreen extends AbstractScreen{
 	BitmapFont bigFont;
 	BitmapFont smallFont;
 	Button closeButton;
+	//Added in sound for an audio clip crediting Sam Kass
+	Sound mention; 
 	Vector3 input;
 	
 	/**
@@ -32,6 +35,7 @@ public class AboutScreen extends AbstractScreen{
 	public AboutScreen(Main game) {
 		super(game);
 		input = new Vector3();
+		loadSound();
 		closeButton = new Button(atlas.findRegion("CLOSEBUTTON"),
 				atlas.findRegion("CLOSEBUTTONSELECTED"),
 				new Rectangle(gameInstance.WIDTH/2 - 60, 55, 120, 40));
@@ -45,6 +49,7 @@ public class AboutScreen extends AbstractScreen{
 	public void show() {
 		Gdx.input.setInputProcessor(this);
 		Gdx.input.setCatchBackKey(true);
+		mention.play(); //plays clip on entrance of about screen
 	}
 
 	/**
@@ -66,6 +71,9 @@ public class AboutScreen extends AbstractScreen{
 		//batch.draw(background,  0,  0);
 	}
 	
+	void loadSound(){
+		mention = Gdx.audio.newSound(Gdx.files.internal("About_mention.mp3"));
+	}
 	
 	@Override
 	public void render(float delta) {
