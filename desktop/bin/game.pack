@@ -1,3 +1,15 @@
+rpsls.png
+format: RGBA8888
+filter: MipMapLinearLinear,Nearest
+repeat: none
+START_SCREEN_IMAGE
+ rotate: false
+  xy: 0, 0
+  size: 800, 600
+  orig: 800, 600
+  offset: 0, 0
+  index: -1
+
 game.png
 format: RGBA8888
 filter: MipMapLinearLinear,Nearest
@@ -133,12 +145,5 @@ ROCK_BACKGROUND
   xy: 855, 1900
   size: 1024, 768
   orig: 1024, 768
-  offset: 0, 0
-  index: -1
-START_SCREEN_IMAGE
-  rotate: false
-  xy: 16, 2556
-  size: 800, 600
-  orig: 800, 600
   offset: 0, 0
   index: -1

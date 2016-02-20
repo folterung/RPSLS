@@ -60,6 +60,7 @@ public class Main extends Game {
 	Sound lizardPoisonsSpock;
 	Sound spockVaporizesRock;
 	Sound spockSmashesScissors;
+	Sound tie;
 
 	//--Entity Information - warnock
 	RPSLSEntity rockEntity;
@@ -100,6 +101,8 @@ public class Main extends Game {
 		lizardPoisonsSpock = Gdx.audio.newSound(Gdx.files.internal("LIZARDSPOCK.ogg"));
 		spockVaporizesRock = Gdx.audio.newSound(Gdx.files.internal("SPOCKROCK.ogg"));
 		spockSmashesScissors = Gdx.audio.newSound(Gdx.files.internal("SPOCKSCISSORS.ogg"));
+		tie = Gdx.audio.newSound(Gdx.files.internal("Tie.ogg"));
+		
 
 		createEntities();
 

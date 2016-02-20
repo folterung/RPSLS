@@ -73,7 +73,7 @@ public class GameLogic {
     private void playWinnerSound(RPSLSEntity playerEntity, RPSLSEntity cpuEntity){
     	if(playerEntity.getName().equals("ROCK")){
     		if(cpuEntity.getName().equals("ROCK")){
-    			
+    			game.tie.play(0.5f);
     		}
 			if(cpuEntity.getName().equals("PAPER")){
 			    game.paperCoversRock.play(0.5f);			
@@ -94,7 +94,7 @@ public class GameLogic {
     			game.paperCoversRock.play(0.5f);
     		}
 			if(cpuEntity.getName().equals("PAPER")){
-			    			
+				game.tie.play(0.5f);			
 			}
 			if(cpuEntity.getName().equals("SCISSORS")){
 				game.scissorsCutPaper.play(0.5f);
@@ -115,7 +115,7 @@ public class GameLogic {
 				game.scissorsCutPaper.play(0.5f);			
 			}
 			if(cpuEntity.getName().equals("SCISSORS")){
-				
+				game.tie.play(0.5f);
 			}
 			if(cpuEntity.getName().equals("LIZARD")){
 				game.scissorsDecapitateLizard.play(0.5f);
@@ -136,7 +136,7 @@ public class GameLogic {
 				game.scissorsDecapitateLizard.play(0.5f);
 			}
 			if(cpuEntity.getName().equals("LIZARD")){
-				
+				game.tie.play(0.5f);
 			}
 			if(cpuEntity.getName().equals("SPOCK")){
 				game.lizardPoisonsSpock.play(0.5f);
@@ -157,7 +157,7 @@ public class GameLogic {
 				game.lizardPoisonsSpock.play(0.5f);
 			}
 			if(cpuEntity.getName().equals("SPOCK")){
-				
+				game.tie.play(0.5f);
 			}
     	}
     }
