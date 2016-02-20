@@ -161,13 +161,16 @@ public class GameScreen extends AbstractScreen {
 		if(gameover){
 			font.draw(batch, "Play Again?", 355, 230);//Ismael added play again message when game is over
 			if(isGameTied){
-				font.draw(batch, "Game is tied", 350, 620);
+				//font.draw(batch, "Game is tied", 350, 620);
+				batch.draw(atlas.findRegion("tied"),  320, 400);// Dennis added graphic for tie game.
 			}
 			if(isPlayerWin){
-				font.draw(batch, "You won this round", 320, 620);
+				//font.draw(batch, "You won this round", 320, 620);
+				batch.draw(atlas.findRegion("winner"),  250, 400);	// Dennis added graphic for winner.
 			}
 			if(isCPUWin){
-				font.draw(batch, "CPU won this round", 320, 620);
+				//font.draw(batch, "CPU won this round", 320, 620);
+				batch.draw(atlas.findRegion("cpu"),  320, 400);	// Dennis added graphic for cpu winner.
 			}
 		}
 	}

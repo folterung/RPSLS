@@ -1,3 +1,39 @@
+winner.png
+format: RGBA8888
+filter: MipMapLinearLinear,Nearest
+repeat: none
+winner
+ rotate: false
+  xy: 0, 0
+  size: 400, 200
+  orig: 400, 200
+  offset: 0, 0
+  index: -1
+  
+cpu.png
+format: RGBA8888
+filter: MipMapLinearLinear,Nearest
+repeat: none
+cpu
+ rotate: false
+  xy: 0, 0
+  size: 400, 200
+  orig: 400, 200
+  offset: 0, 0
+  index: -1
+
+tied.png
+format: RGBA8888
+filter: MipMapLinearLinear,Nearest
+repeat: none
+tied
+ rotate: false
+  xy: 0, 0
+  size: 400, 200
+  orig: 400, 200
+  offset: 0, 0
+  index: -1
+  
 rpsls.png
 format: RGBA8888
 filter: MipMapLinearLinear,Nearest
