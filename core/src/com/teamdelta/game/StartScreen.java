@@ -17,6 +17,7 @@ import com.badlogic.gdx.math.Vector3;
  * 2/14/16 - added start screen image - warnock
  * 2/14/16 - added click sound - warnock
  * 2/18/16 - modified intro sound clip - Ismael
+ * 2/19/16 - edit new start screen image - warnock
  */
 
 public class StartScreen extends  AbstractScreen {
@@ -47,16 +48,16 @@ public class StartScreen extends  AbstractScreen {
 
 		playGameButton = new Button(atlas.findRegion("PLAYBUTTON"),
 				atlas.findRegion("PLAYBUTTONSELECTED"), 
-				new Rectangle(gameInstance.WIDTH/2 - 60, 300, 140, 50));
+				new Rectangle(gameInstance.WIDTH/2 - 60, 250, 140, 50));
 		aboutButton = new Button(atlas.findRegion("ABOUTBUTTON"),
 				atlas.findRegion("ABOUTBUTTONSELECTED"),
-				new Rectangle(gameInstance.WIDTH/2 - 60, 225, 140, 50));
+				new Rectangle(gameInstance.WIDTH/2 - 60, 175, 140, 50));
 		rulesButton = new Button(atlas.findRegion("RULESBUTTON"),
 				atlas.findRegion("RULESBUTTONSELECTED"),
-				new Rectangle(gameInstance.WIDTH/2 - 60, 150, 140, 50));
+				new Rectangle(gameInstance.WIDTH/2 - 60, 100, 140, 50));
 		exitButton = new Button(atlas.findRegion("EXITBUTTON"),
 				atlas.findRegion("EXITBUTTONSELECTED"),
-				new Rectangle(gameInstance.WIDTH/2 - 60, 75, 140, 50));
+				new Rectangle(gameInstance.WIDTH/2 - 60, 25, 140, 50));
 
 	}
 	@Override
