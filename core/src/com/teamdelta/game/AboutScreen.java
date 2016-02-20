@@ -2,6 +2,7 @@ package com.teamdelta.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Rectangle;
@@ -55,12 +56,25 @@ public class AboutScreen extends AbstractScreen{
 	 * 
 	 * 
 	 */
+	
+	void renderBackground() {
+		batch.draw(atlas.findRegion("ROCK_BACKGROUND"), 0, 0);
+		
+		//background = new Texture(Gdx.files.internal("Slate_Background.png"));
+		//**^^The above code for slate background causes RAM to 
+		//****sky-rocket until machine freezes.
+		//batch.draw(background,  0,  0);
+	}
+	
+	
 	@Override
 	public void render(float delta) {
 		
 		//Jacob Added Background image 2/18/16
-		background = new Texture(Gdx.files.internal("Slate_Background.jpg"));
-		batch.draw(background,  0,  0);
+		renderBackground();
+		
+		bigFont.setColor(new Color(Color.BLACK));
+		smallFont.setColor(new Color(Color.BLACK));
 		
 		bigFont.draw(batch, "Rock, Paper, Scissors, Lizard, Spock", 220, 600);
 		bigFont.draw(batch, "Developed by Team Delta", 245, 570);
